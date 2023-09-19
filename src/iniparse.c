@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <malloc.h>
-#include "../../Common/Trim/src/trim.h"
+#include "trim.h"
 
 int main( int argc, char ** argv )
 {
