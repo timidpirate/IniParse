@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#set -e
+
+tests=$(find . -name "test.*.c")
+
+for test in $tests; do
+	
+	../iniparse input-file.ini
+	
+	gcc $test ./main.c
+	./a.out $test
+	rm -rf a.out
+	rm -rf op*
+done;
