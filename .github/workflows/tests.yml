@@ -1,0 +1,27 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  check:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Running all tests
+      run:  |
+            cd tests
+            tests=$(find . -name "test.*.c")
+            for test in $tests; do
+                ../iniparse input-file.ini
+                gcc $test ./main.c
+                ./a.out $test
+                rm ./a.out
+                rm ./op*
+            done;
